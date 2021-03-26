@@ -1,6 +1,7 @@
 # Grafana High Avialability
 
 ![Architecture](./images/grafana-high-availability.png)
+image source: grafana
 
 ### Pre-requisites:
 - docker
@@ -14,7 +15,7 @@
 ```bash
 docker compose up -d
 ```
-\
+
 Go to [localhost:8080](http://localhost:8080) on your browser.
 \
 \
