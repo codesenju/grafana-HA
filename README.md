@@ -12,3 +12,5 @@ docker compose up -d
 ```
 \
 Go to <a href="http://localhost:8080/" target="_blank">localhost</a> on your browser.
+
+[link](http://localhost:8080/){:target="_blank"}
