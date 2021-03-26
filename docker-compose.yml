@@ -31,8 +31,8 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     networks:
       - monitor
-  grafana:
-    container_name: grafana
+  grafana1:
+    container_name: grafana1
     image: grafana/grafana:7.4.1
     networks:
       - monitor
