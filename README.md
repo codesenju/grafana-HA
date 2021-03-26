@@ -4,7 +4,7 @@
 
 ### Breakdown:
 - Nginx will serve as our Load Balancer.
-- Postgres will store our data.
+- PostgreSQL 12 will store our data.
 
 ### Quick start:
 ```bash
