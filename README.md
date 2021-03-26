@@ -2,6 +2,10 @@
 
 ![Architecture](./images/grafana-high-availability.png)
 
+### Pre-requisites:
+- docker
+- docker-compose
+
 ### Breakdown:
 - Nginx will serve as our Load Balancer.
 - PostgreSQL 12 will store our data.

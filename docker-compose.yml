@@ -1,6 +1,6 @@
 version: "3"
 volumes:
-  grafana_data:
+#  grafana_data:
   db_data:
 networks:
   monitor:
