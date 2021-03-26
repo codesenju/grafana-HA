@@ -11,4 +11,10 @@
 docker compose up -d
 ```
 \
-Go to <a href="http://localhost:8080/" target="_blank">localhost</a> on your browser.
+Go to [localhost:8080](http://localhost:8080) on your browser.
+\
+\
+Initial grafana sign in details:
+|Username|Password|
+|--------|:------:|
+|admin   | admin  | 
