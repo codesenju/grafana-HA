@@ -39,7 +39,7 @@ services:
     expose:
       - 3000
     environment:
-      - "GF_DEFAULT_INSTANCE_NAME=${HOSTNAME}"
+      - "GF_DEFAULT_INSTANCE_NAME=localhost"
       - "GF_DATABASE_URL=postgres://grafana:grafana123@grafana-db:5432/grafana"
       - "GF_SECURITY_ADMIN_USER=admin"
       - "GF_SECURITY_ADMIN_PASSWORD=admin"
