@@ -1,6 +1,5 @@
 version: "3"
 volumes:
-#  grafana_data:
   db_data:
 networks:
   monitor:
@@ -14,7 +13,7 @@ services:
     networks:
       - monitor
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./conf/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - grafana1
       - grafana2
@@ -38,21 +37,9 @@ services:
       - monitor
     expose:
       - 3000
-    environment:
-      - "GF_DEFAULT_INSTANCE_NAME=localhost"
-      - "GF_DATABASE_URL=postgres://grafana:grafana123@grafana-db:5432/grafana"
-      - "GF_SECURITY_ADMIN_USER=admin"
-      - "GF_SECURITY_ADMIN_PASSWORD=admin"
-      - "GF_USERS_ALLOW_SIGN_UP=false"
-#      - "GF_SMTP_ENABLED=true"
-#      - "GF_SMTP_HOST=mailserver.com:25"
-#      - "GF_SMTP_SKIP_VERIFY=true"
-#      - "GF_SMTP_FROM_ADDRESS=admin@grafana-container.com"
-#      - "GF_SMTP_FROM_NAME=Grafana-container"
     volumes:
-#      - grafana_data:/var/lib/grafana
       - ./plugins:/var/lib/grafana/plugins
-#      - ./grafana/conf/grafana.ini:/etc/grafana/grafana.ini
+      - ./conf/grafana.ini:/etc/grafana/grafana.ini
     depends_on:
       - grafana-db
 
@@ -63,20 +50,8 @@ services:
       - monitor
     expose:
       - 3000
-    environment:
-      - "GF_DEFAULT_INSTANCE_NAME=localhost"
-      - "GF_DATABASE_URL=postgres://grafana:grafana123@grafana-db:5432/grafana"
-      - "GF_SECURITY_ADMIN_USER=admin"
-      - "GF_SECURITY_ADMIN_PASSWORD=admin"
-      - "GF_USERS_ALLOW_SIGN_UP=false"
-#      - "GF_SMTP_ENABLED=true"
-#      - "GF_SMTP_HOST=mailserver.com:25"
-#      - "GF_SMTP_SKIP_VERIFY=true"
-#      - "GF_SMTP_FROM_ADDRESS=admin@grafana-container.com"
-#      - "GF_SMTP_FROM_NAME=Grafana-container"
     volumes:
-#      - grafana_data:/var/lib/grafana
       - ./plugins:/var/lib/grafana/plugins
-#      - ./grafana/conf/grafana.ini:/etc/grafana/grafana.ini
+      - ./conf/grafana.ini:/etc/grafana/grafana.ini
     depends_on:
       - grafana-db
