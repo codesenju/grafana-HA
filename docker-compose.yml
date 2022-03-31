@@ -2,21 +2,21 @@ version: "3"
 volumes:
   db_data:
 networks:
-  monitor:
-    driver: bridge
+  keycloak_net:
+    external: true
 services:
-  proxy:
-    image: nginx:alpine
-    container_name: nginx
-    ports:
-      - 8080:80
-    networks:
-      - monitor
-    volumes:
-      - ./conf/nginx.conf:/etc/nginx/nginx.conf:ro
-    depends_on:
-      - grafana1
-      - grafana2
+#  proxy:
+#    image: nginx:alpine
+#    container_name: nginx
+#    ports:
+#      - 4000:80
+#    networks:
+#      - keycloak_net
+#    volumes:
+#      - ./conf/nginx.conf:/etc/nginx/nginx.conf:ro
+#    depends_on:
+#      - grafana1
+#      - grafana2
   grafana-db:
     container_name: grafana-db
     image: postgres:12-alpine
@@ -29,27 +29,26 @@ services:
       POSTGRES_DB: grafana
       PGDATA: /var/lib/postgresql/data/pgdata
     networks:
-      - monitor
-  grafana1:
-    container_name: grafana1
-    image: grafana/grafana:7.4.1
-    networks:
-      - monitor
-    expose:
-      - 3000
-    volumes:
-      - ./plugins:/var/lib/grafana/plugins
-      - ./conf/grafana.ini:/etc/grafana/grafana.ini
-    depends_on:
-      - grafana-db
-
+      - keycloak_net
+#  grafana1:
+#    container_name: grafana1
+#    image: grafana/grafana:7.4.1
+#   networks:
+#      - monitor
+#    expose:
+#      - 4000
+#    volumes:
+#      - ./plugins:/var/lib/grafana/plugins
+#      - ./conf/grafana.ini:/etc/grafana/grafana.ini
+#    depends_on:
+#      - grafana-db
   grafana2:
     container_name: grafana2
     image: grafana/grafana:7.4.1
     networks:
-      - monitor
-    expose:
-      - 3000
+      - keycloak_net
+    ports:
+      - 4000:4000
     volumes:
       - ./plugins:/var/lib/grafana/plugins
       - ./conf/grafana.ini:/etc/grafana/grafana.ini
